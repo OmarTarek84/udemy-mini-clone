@@ -1,0 +1,9 @@
+<div class="errorDialogParent">
+  <h2>Error</h2>
+  <ul class="errors">
+    <li *ngFor="let err of data">{{err}}</li>
+  </ul>
+</div>
+<div class="closedialog" mat-dialog-actions>
+  <button  [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</div>

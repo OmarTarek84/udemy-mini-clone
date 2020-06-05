@@ -1,0 +1,39 @@
+<div class="spinner" *ngIf="courseload">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="createParent" *ngIf="course&&!courseload">
+  <div class="arrowResponsive" *ngIf="innerWidth < 768">
+    <mat-icon *ngIf="!openCourseMenuResponsive" (click)="openCourseMenuResponsive = true">arrow_drop_down_circle</mat-icon>
+    <mat-icon *ngIf="openCourseMenuResponsive" (click)="openCourseMenuResponsive = false">arrow_drop_up</mat-icon>
+  </div>
+  <div class="sectionsAndLessonsParent"
+       *ngIf="innerWidth > 767 || (innerWidth <= 767 && openCourseMenuResponsive)">
+    <div class="courseTitle">
+      <p>{{course.courseTitle}}</p>
+    </div>
+    <div class="triggerVideosParent">
+
+      <div class="sectionAndLessons" *ngFor="let section of course.sections; let sectionIndex = index">
+        <span class="sectionName">{{section.sectionName}}</span>
+        <div class="lessons">
+          <a class="lesson"
+             *ngFor="let lesson of section.sectionLessons; let lessonIndex = index"
+             (click)="onSelectVideo(sectionIndex, lessonIndex)">
+            <mat-icon [style.color]="videoSrc === lesson.lessonVideoFile ? '#FEB437': 'black'">videocam</mat-icon>
+            <p [style.font-weight]="videoSrc === lesson.lessonVideoFile ? 'bolder': 'initial'">{{lesson.lessonName}} ({{lesson.videoDuration}})</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="videoParent">
+    <mat-video src="{{videoSrc}}"
+               title="{{lessonTitle}}"
+               download="true"
+               autoplay="true"
+               spinner="spin"></mat-video>
+  </div>
+
+</div>

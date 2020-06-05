@@ -1,0 +1,121 @@
+@import '../../assets/scss/var.scss';
+.spinner {
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  ::ng-deep {
+    .mat-progress-spinner circle, .mat-spinner circle {
+      stroke: $orangeColor;
+    }
+  }
+}
+.createParent {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  @media screen and (max-width: 767px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .arrowResponsive {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2%;
+    mat-icon {
+      color: $blueColor;
+      cursor: pointer;
+    }
+  }
+
+  .sectionsAndLessonsParent {
+    flex: 0 0 30%;
+    overflow-y: auto;
+    max-height: 90vh;
+    @media screen and (max-width: 767px) {
+      flex: 0 0 90%;
+      margin-top: 100px;
+    }
+    .courseTitle {
+      background-color: $greyColor;
+      padding: 5% 4%;
+      p {
+        font-size: 21px;
+        font-weight: bold;
+        color: $orangeColor;
+        text-align: center;
+        @media screen and (max-width: 991px) {
+          font-size: 16px;
+        }
+      }
+    }
+    .triggerVideosParent {
+      margin-top: 1%;
+      .sectionAndLessons {
+        &:not(:first-child) {
+          margin-top: 6%;
+          @media screen and (max-width: 767px) {
+            margin-top: 3%;
+          }
+        }
+        span.sectionName {
+          font-size: 18px;
+          width: 100%;
+          background-color: #d9f6bb;
+          padding: 2%;
+          display: block;
+          @media screen and (max-width: 991px) {
+            font-size: 14px;
+          }
+        }
+        .lessons {
+          background-color: aliceblue;
+          @media screen and (max-width: 767px) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+          .lesson {
+            border-bottom: 1px solid lightgrey;
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            cursor: pointer;
+            padding: 3% 4%;
+            @media screen and (max-width: 767px) {
+              flex: 0 0 22%;
+              padding: 3% 0;
+              flex-direction: column;
+            }
+            @media screen and (max-width: 576px) {
+              flex: 0 0 48%;
+              padding: 3% 3px;
+              flex-direction: column;
+            }
+            p {
+              margin-left: 3px;
+              font-weight: lighter;
+              @media screen and (max-width: 991px) {
+                font-size: 12px;
+              }
+              @media screen and (max-width: 767px) {
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .videoParent {
+    flex: 1;
+    @media screen and (max-width: 767px) {
+      margin-top: 10%;
+      flex: 0 0 100%;
+    }
+  }
+}

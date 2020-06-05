@@ -1,0 +1,90 @@
+@import '../../../assets/scss/var.scss';
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  @media screen and (max-width: 576px) {
+    text-align: center;
+    font-size: 18px;
+  }
+}
+
+form {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: column;
+  height: 86%;
+  min-height: 400px;
+  @media screen and (max-width: 576px) {
+    text-align: center;
+  }
+  .aboutInput {
+    margin-top: 1.5%;
+    @media screen and (max-width: 767px) {
+      margin-top: 5%;
+    }
+    @media screen and (max-width: 576px) {
+      margin-top: 9%;
+    }
+    label {
+      font-size: 17px;
+      @media screen and (max-width: 576px) {
+        font-size: 14px;
+      }
+    }
+    input {
+      border: 1px solid grey;
+      padding: 6px;
+      width: 100%;
+      margin-top: 9px;
+      display: block;
+    }
+    textarea {
+      resize: none;
+      border: 1px solid grey;
+      padding: 6px;
+      width: 100%;
+      margin-top: 9px;
+      height: 73%;
+      display: block;
+      min-height: 200px;
+    }
+  }
+  .btnn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    button {
+      margin-left: auto;
+      margin-right: auto;
+      background-color: $orangeColor;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      width: 35%;
+      text-align: center;
+      padding: 1%;
+      color: $blueColor;
+      justify-content: center;
+      &:disabled {
+        opacity: .4;
+        cursor: initial;
+      }
+      @media screen and (max-width: 576px) {
+        width: 90%;
+        margin-top: 13%;
+      }
+      span {
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+      }
+      mat-icon {
+        color: white;
+      }
+    }
+  }
+}

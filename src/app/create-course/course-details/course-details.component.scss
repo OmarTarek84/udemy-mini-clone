@@ -1,0 +1,199 @@
+@import '../../../assets/scss/var.scss';
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  @media screen and (max-width: 576px) {
+    font-size: 18px;
+  }
+}
+
+form {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 86%;
+  min-height: 400px;
+  .courseDetailsInput {
+    flex: 0 0 48%;
+    margin-top: 2%;
+    label {
+      @media screen and (max-width: 576px) {
+        font-size: 13.5px;
+      }
+    }
+    @media screen and (max-width: 576px) {
+      flex: 0 0 100%;
+    }
+    &.desc {
+      flex: 0 0 100%;
+    }
+    input,
+    textarea {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 1%;
+      resize: none;
+    }
+    textarea {
+      height: 78%;
+      @media screen and (max-width: 576px) {
+        height: 65%;
+      }
+    }
+    mat-select {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 1%;
+      background-color: white;
+      resize: none;
+    }
+    .incDec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      input {
+        flex: 0 0 65%;
+        @media screen and (max-width: 991px) {
+          flex: 0 0 72%;
+        }
+        @media screen and (max-width: 576px) {
+          flex: 0 0 85%;
+        }
+      }
+      .iconss {
+        flex: 1;
+        display: flex;
+        margin-left: 1%;
+        mat-icon {
+          margin: 0 3px;
+          @media screen and (max-width: 576px) {
+            margin: 0 1px;
+          }
+          cursor: pointer;
+          &:first-child {
+            color: lightgreen;
+          }
+          &:last-child {
+            color: red;
+        }
+        }
+      }
+    }
+    &.formarr {
+      @media screen and (max-width: 767px) {
+        flex: 0 0 90%;
+      }
+    }
+  }
+  .coursePhotoSubmit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3%;
+    flex: 0 0 48%;
+    @media screen and (max-width: 576px) {
+      flex: 0 0 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 8%;
+    }
+    .fileI {
+      background-color: $orangeColor;
+      border: none;
+      border-radius: 6px;
+      padding: 1% 2%;
+      font-weight: 500;
+      position: relative;
+      flex: 0 0 60%;
+      cursor: pointer;
+      @media screen and (max-width: 991px) {
+        flex: 0 0 70%;
+      }
+      @media screen and (max-width: 576px) {
+        flex: 0 0 80%;
+      }
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        cursor: pointer;
+        opacity: 0;
+        width: 100%;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        z-index: 1;
+        cursor: pointer;
+        text-align: center;
+        width: 100%;
+      }
+    }
+    .imgg {
+      flex: 0 0 20%;
+      @media screen and (max-width: 576px) {
+        flex: 0 0 80%;
+        margin-top: 3px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      p {
+        // white-space: nowrap;
+      }
+    }
+  }
+  .buttonCont {
+    flex: 0 0 48%;
+    position: relative;
+    @media screen and (max-width: 576px) {
+      flex: 0 0 100%;
+    }
+    button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: $orangeColor;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      width: 35%;
+      text-align: center;
+      padding: 1%;
+      color: $blueColor;
+      justify-content: center;
+      &:disabled {
+        opacity: .4;
+        cursor: initial;
+      }
+      @media screen and (max-width: 991px) {
+        width: 50%;
+      }
+      @media screen and (max-width: 576px) {
+        width: 90%;
+        position: relative;
+        font-size: 13px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3%;
+      }
+      span {
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+      }
+      mat-icon {
+        color: white;
+      }
+    }
+  }
+}

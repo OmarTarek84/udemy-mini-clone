@@ -1,0 +1,205 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import '../../assets/scss/var.scss';
+
+.account-contFluid {
+  @extend .container-fluid;
+  margin-top: 2%;
+  .acc-con {
+    @extend .container;
+    .acc-row {
+      @extend .row;
+      .acc-col {
+        @extend .col-12;
+        h2 {
+          text-align: center;
+        }
+        p.subtitle {
+          text-align: center;
+          color: gray;
+          margin-top: 1%;
+        }
+        form {
+          margin-top: 5%;
+          .fieldP {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            @media screen and (max-width: 576px) {
+              flex-direction: column;
+              align-items: center;
+            }
+            .image {
+              flex: 0 0 20%;
+              img {
+                border: 2px solid $blueColor;
+                border-radius: 50%;
+                width: 100%;
+              }
+            }
+            .field {
+              flex: 0 0 60%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              @media screen and (max-width: 576px) {
+                margin-top: 4%;
+              }
+              .emailInput,
+              .fullnameInput {
+                position: relative;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                input {
+                  border-radius: 10px;
+                  width: 100%;
+                  margin-left: auto;
+                  margin-right: auto;
+                  outline: none;
+                  border: 1px solid grey;
+                  padding: 2%;
+                  @media screen and (max-width: 991px) {
+                    padding: 2% 5%;
+                  }
+                }
+                p.error {
+                  position: absolute;
+                  left: 0;
+                  top: 105%;
+                  font-size: 10px;
+                  color: red;
+                }
+              }
+              .fullnameInput {
+                margin-top: 6%;
+                @media screen and (max-width: 576px) {
+                  margin-top: 11%;
+                }
+              }
+              .inputImg {
+                position: relative;
+                margin-top: 5%;
+                @media screen and (max-width: 576px) {
+                  margin-top: 11%;
+                }
+                input[type="file"] {
+                  display: block;
+                  width: 80%;
+                  margin-left: auto;
+                  position: relative;
+                  z-index: 1;
+                  margin-right: auto;
+                  cursor: pointer;
+                  min-height: 38px;
+                  opacity: 0;
+                  @media screen and (max-width: 576px) {
+                    min-height: 26px;
+                  }
+                }
+                button {
+                  background-color: $orangeColor;
+                  color: white;
+                  cursor: pointer;
+                  width: 50%;
+                  position: absolute;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  z-index: 0;
+                  top: 0;
+                  padding: 2%;
+                  border: none;
+                  display: block;
+                  border-radius: 6px;
+                  @media screen and (max-width: 576px) {
+                    width: 70%;
+                  }
+                }
+              }
+            }
+          }
+          .changePassHere {
+            border: 1px solid grey;
+            border-radius: 5px;
+            margin-top: 6%;
+            @media screen and (max-width: 576px) {
+              margin-top: 18%;
+            }
+            h3.change {
+              text-align: center;
+              padding: 3% 0;
+              @media screen and (max-width: 576px) {
+                font-size: 15.5px;
+              }
+            }
+            input {
+              display: block;
+              width: 80%;
+              margin-left: auto;
+              margin-right: auto;
+              padding: 5px 12px;
+              border-radius: 5px;
+              border: 1px solid $greyColor;
+              outline: none;
+              &:not(:first-of-type) {
+                margin-top: 10px;
+              }
+            }
+            .errors {
+              margin-top: 1%;
+              width: 80%;
+              margin-left: auto;
+              margin-right: auto;
+              padding-bottom: 3%;
+              @media screen and (max-width: 576px) {
+                margin-top: 5%;
+              }
+              p {
+                color: red;
+                font-size: 12px;
+                margin-top: 3px;
+                @media screen and (max-width: 576px) {
+                  font-size: 10px;
+                }
+              }
+            }
+          }
+          button[type="submit"] {
+            background-color: $blueColor;
+            padding: 10px 0;
+            width: 40%;
+            display: block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 4%;
+            margin-bottom: 2%;
+            cursor: pointer;
+            &:disabled {
+              opacity: .4;
+              cursor: initial;
+            }
+            @media screen and (max-width: 576px) {
+              left: 0;
+              transform: translateX(0);
+              width: 100%;
+              margin-top: 16%;
+              margin-bottom: 8.5%;
+            }
+          }
+        }
+        .Success {
+          color: green;
+          font-size: 18px;
+          text-align: center;
+          margin-top: 4%;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

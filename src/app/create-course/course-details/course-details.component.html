@@ -1,0 +1,67 @@
+<h2>Now Fill Your Course Details</h2>
+<form [formGroup]="courseDetailsForm" enctype="multipart/form-data">
+  <div class="courseDetailsInput">
+    <label>Course Title</label>
+    <input type="text" formControlName="courseTitle" />
+  </div>
+  <div class="courseDetailsInput">
+    <label>Course Subtitle</label>
+    <input type="text" formControlName="courseSubtitle" />
+  </div>
+  <div class="courseDetailsInput">
+    <label>Course Price</label>
+    <input type="number" formControlName="coursePrice" />
+  </div>
+  <div class="courseDetailsInput">
+    <label>Course Category</label>
+    <mat-select formControlName="courseCategory">
+      <mat-option *ngFor="let cat of allCategories" [value]="cat">
+        {{ cat }}
+       </mat-option>
+    </mat-select>
+  </div>
+  <div class="courseDetailsInput desc">
+    <label>Course Description</label>
+    <textarea rows="10" formControlName="courseDescription"></textarea>
+  </div>
+  <div class="courseDetailsInput formarr">
+    <label>What will The Student Learn?</label>
+    <div class="incDec"
+         formArrayName="studentLearn"
+         *ngFor="let learn of courseDetailsForm.get('studentLearn')['controls']; let i = index">
+      <input type="text" [formControlName]="i" (input)="studentLearnChange()" />
+      <div class="iconss">
+        <mat-icon (click)="addLearn()">add_circle</mat-icon>
+        <mat-icon (click)="removeLearn(i)">remove_circle</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="courseDetailsInput formarr">
+    <label>What are the course Requirements?</label>
+    <div class="incDec"
+         formArrayName="courseRequirements"
+         *ngFor="let learn of courseDetailsForm.get('courseRequirements')['controls']; let i = index">
+      <input type="text" [formControlName]="i" (input)="courseReqChange()" />
+      <div class="iconss">
+        <mat-icon (click)="addRequirement()">add_circle</mat-icon>
+        <mat-icon (click)="removeRequirement(i)">remove_circle</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="coursePhotoSubmit">
+    <div class="fileI">
+      <input type="file" accept=".jpg, .png, .jpeg" (change)="onFileChanged($event)" />
+      <button>Pick A photo For Your Course</button>
+    </div>
+    <div class="imgg">
+      <img src="{{editedImage || imgURL || '../../../assets/images/person.png'}}" />
+      <p [style.color]="sizeError ? 'red': 'white'">Max Image Size: 2MB</p>
+    </div>
+  </div>
+  <div class="buttonCont">
+    <button type="button" [disabled]="!courseDetailsForm.valid" (click)="onGoToCourseSectionsTab()">
+      <span>Continue</span>
+      <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+  </div>
+</form>

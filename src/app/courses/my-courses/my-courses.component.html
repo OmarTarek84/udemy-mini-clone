@@ -1,0 +1,19 @@
+<div class="sortP">
+  <div class="sortsSearches">
+    <div class="search">
+      <input type="text" [(ngModel)]="searchCo" placeholder="Search Courses" />
+      <mat-icon (click)="searchMyCourses()" [style.opacity]="coursesLoading ? '.35': '1'">find_in_page</mat-icon>
+    </div>
+  </div>
+</div>
+
+
+<div class="allCourses">
+  <div class="spinner" *ngIf="coursesLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <app-courses-list [myCourses]="myCourses"
+                    *ngIf="myCourses.length > 0 && !coursesLoading"
+                    (pageChangedOutput)="pageChange($event)"></app-courses-list>
+  <p *ngIf="myCourses.length <= 0 && !coursesLoading">You Have Not Created any courses Yet</p>
+</div>

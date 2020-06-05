@@ -1,0 +1,22 @@
+<div class="sortP" *ngIf="!coursesLoading">
+  <div class="sortsSearches">
+    <div class="sortDateFilter">
+      <mat-select (selectionChange)="instructorChange($event)" [(value)]="selectedInstructor" [disabled]="coursesLoading">
+        <mat-option *ngFor="let instructor of coursesInstructors" [value]="instructor">
+          {{instructor}}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+</div>
+
+
+<div class="enrollCourses">
+  <div class="spinner" *ngIf="coursesLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <app-courses-list [enrolledCourses]="enrolledCourses"
+                    *ngIf="enrolledCourses.length > 0 && !coursesLoading"
+                    (pageChangedOutput)="pageChange($event)"></app-courses-list>
+  <p  *ngIf="enrolledCourses.length <= 0 && !coursesLoading">You Haven't Enrolled iin any courses yet</p>
+</div>

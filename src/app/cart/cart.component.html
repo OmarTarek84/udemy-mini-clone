@@ -1,0 +1,52 @@
+<div class="cartBanner">
+  <div class="banner-con">
+    <div class="banner-row">
+      <div class="banner-col">
+        <mat-icon>shopping_cart</mat-icon>
+        <p>Shopping Cart</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cart">
+  <div class="cart-con">
+    <div class="cart-row">
+      <p class="nocourses" *ngIf="!cartLoading && cartCourses.length <= 0">You Have No Courses in Your Cart</p>
+      <div class="cart-col" *ngIf="!cartLoading && cartCourses.length > 0">
+        <div class="course_cart">
+          <p class="howmanycourses">{{cartCourses.length}} course in cart</p>
+          <div class="cardd" *ngFor="let course of cartCourses">
+            <div class="courseImg">
+              <img src="{{course.coursePhoto}}" />
+            </div>
+            <div class="course_details">
+              <h3>{{course.courseTitle}}</h3>
+              <p>By {{course.user.username}}</p>
+            </div>
+            <div class="buttons">
+              <button class="remove" (click)="removeCart(course._id)">Remove</button>
+              <button class="wish"
+                      (click)="moveToWishlist(course._id)"
+                      *ngIf="userDetails().wishlist.indexOf(course._id) < 0">Move To Wishlist</button>
+            </div>
+            <div class="price">
+              <span>${{course.coursePrice}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="totalAndClearCart">
+          <div class="total">
+            <p class="totalTitle">Total</p>
+            <span class="money">${{totalPrice.toFixed(2)}}</span>
+            <a (click)="openCheckout()">Checkout</a>
+          </div>
+          <button class="clearcart" [disabled]="cartLoading" (click)="onClearCart()">Clear Cart</button>
+        </div>
+      </div>
+      <div class="spinner" *ngIf="cartLoading">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+</div>

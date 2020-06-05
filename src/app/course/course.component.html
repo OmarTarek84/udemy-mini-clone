@@ -1,0 +1,121 @@
+<div class="spinner" *ngIf="courseLoading">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div class="coursenameTitle" *ngIf="!courseLoading">
+  <div class="tit-con">
+    <div class="tit-row">
+      <div class="tit-col">
+        <div class="courseTitleSubtitle">
+          <h2>{{course.courseTitle}}</h2>
+          <p>{{course.courseSubtitle}}</p>
+          <p>({{course.enrolledUsers.length}} enrolled in this course)</p>
+          <div class="createdByUpdate">
+            <span class="cre">Created By {{course.user.username.split(' ').slice(0, 2).join(' ')}}</span>
+            <span class="lastUpdated">Last Updated: {{cchangeToDate(course.updatedAt)}}</span>
+          </div>
+        </div>
+        <div class="coursePhoto">
+          <img src="{{course.coursePhoto}}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="details" *ngIf="!courseLoading">
+  <div class="det-con">
+    <div class="det-row">
+      <div class="det-col">
+        <div class="course">
+          <div class="learn">
+            <h2>What You'll Learn</h2>
+            <div class="learn-list">
+              <div class="learn-one" *ngFor="let le of course.studentLearn">
+                <mat-icon>check_circle</mat-icon>
+                <p>{{le}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="Req">
+            <h2>Requirements</h2>
+            <div class="requirements-list">
+              <p *ngFor="let le of course.courseRequirements; let i = index">{{i+1}}- {{le}}</p>
+            </div>
+          </div>
+          <div class="courseDescription">
+            <h2>Description</h2>
+            <p>{{course.courseDescription}}</p>
+          </div>
+          <div class="courseContent">
+            <div class="title">
+              <h2>Course Content</h2>
+              <div class="c">
+                <span>{{lecturesCount}} Lectures</span>
+                <button (click)="allExpanded = !allExpanded">{{allExpanded ? 'Collapse': 'Expand'}} All</button>
+              </div>
+            </div>
+            <div class="content">
+              <mat-accordion *ngFor="let c of course.sections; let i = index">
+                <mat-expansion-panel [expanded]="allExpanded">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      section #{{i + 1}}       {{c.sectionName}}
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="cTitle" *ngFor="let lesson of c.sectionLessons">
+                    <p class="lessonName">{{lesson.lessonName}}</p>
+                    <span class="time">{{lesson.videoDuration}}</span>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </div>
+        </div>
+        <div class="cart">
+          <span class="price">${{course.coursePrice}}</span>
+          <ng-container *ngIf="isLoggedIn">
+            <p class="own" *ngIf="course.user.email === userDetails().email">You Created This Course</p>
+            <a class="continue" [routerLink]="['/lectures/' + course._id]" *ngIf="userDetails().enrolledCourses.indexOf(course._id) > -1">Continue Course...</a>
+            <div class="buttonsC" *ngIf="course.user.email !== userDetails().email && userDetails().enrolledCourses.indexOf(course._id) <= -1">
+              <button class="notwishlist"
+                      *ngIf="userDetails().wishlist.indexOf(course._id) <= -1"
+                      (click)="addToWishlist(course._id)"
+                      [disabled]="wishlistLoading">Wishlist</button>
+              <button class="wishlisted"
+                      *ngIf="userDetails().wishlist.indexOf(course._id) > -1">Wishlisted</button>
+              <button (click)="addCart(course._id)"
+                      [disabled]="cartLoading"
+                      class="addCart"
+                      *ngIf="userDetails().cart.indexOf(course._id) <= -1">Add To Cart</button>
+              <button [disabled]="cartLoading"
+                      class="cartAdded"
+                      *ngIf="userDetails().cart.indexOf(course._id) > -1">In Cart</button>
+            </div>
+            <button class="BuyNow"
+                    *ngIf="course.user.email !== userDetails().email
+                           && userDetails().enrolledCourses.indexOf(course._id) <= -1"
+                    (click)="onBuyCourse(course._id)">Buy Now</button>
+          </ng-container>
+        </div>
+      </div>
+      <div class="ins-col">
+        <div class="instructor">
+          <div class="photoParent">
+            <img src="{{course.user.userPhoto}}" alt="Instructor Photo" />
+            <div class="details">
+              <mat-icon>queue_play_next</mat-icon>
+              <p><span>{{course.user.ownCourses.length}}</span> Courses</p>
+            </div>
+          </div>
+          <div class="description">
+            <h3>{{course.user.username}}</h3>
+            <span>{{course.profession}}</span>
+            <p>{{course.instructorDescription}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

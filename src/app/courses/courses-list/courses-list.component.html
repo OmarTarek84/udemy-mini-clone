@@ -1,0 +1,52 @@
+<div class="cs">
+  <div class="c" *ngFor="let course of router.url === '/courses/all-courses' ? allCourses.slice(0, 6):
+                                  router.url === '/courses/enrolled-courses' ? enrolledCourses.slice(0, 6):
+                                  router.url === '/courses/my-courses' ? myCourses.slice(0, 6): wishlist.slice(0, 6)">
+    <div class="imageParent">
+      <img src="{{course.coursePhoto}}" />
+    </div>
+    <div class="pad">
+      <span>{{course.courseTitle}}</span>
+      <p class="name">{{course.user.username}}</p>
+      <p class="profession">{{course.profession}}</p>
+      <div class="buttons">
+        <button class="details" (click)="onGoToCourse(course)">Details</button>
+        <button class="wishlistt"
+                *ngIf="course.user.email !== authService.getUserDetails().email &&
+                       authService.getSignedIn() &&
+                       router.url !== '/courses/wishlist' &&
+                       authService.userDetails.enrolledCourses.indexOf(course._id) <= -1"
+                (click)="onWishlist(course._id)"
+                [disabled]="wishlistLoading">
+          <span>WishList</span>
+          <mat-icon class="no" [style.display]="!authService.signedIn || authService.userDetails.wishlist.indexOf(course._id) <= -1 ? 'block': 'none'">favorite_border</mat-icon>
+          <mat-icon class="yes" [style.display]="authService.signedIn&&authService.userDetails.wishlist.indexOf(course._id) > -1 ? 'block': 'none'">favorite</mat-icon>
+        </button>
+        <button class="details"
+                *ngIf="course.user.email === authService.getUserDetails().email && authService.getSignedIn()"
+                (click)="onEditCourse(course._id)">Edit</button>
+        <button class="delete"
+                (click)="deleteCourse(course._id)"
+                *ngIf="course.user.email === authService.getUserDetails().email &&
+                       authService.getSignedIn() &&
+                       course.enrolledUsers.length <= 0">Delete</button>
+        <button class="removeWishlist"
+                *ngIf="router.url === '/courses/wishlist'" (click)="onWishlist(course._id)">Remove</button>
+        <button class="gotocourse"
+                (click)="onGoToCourseLecture(course._id)"
+                *ngIf="authService.userDetails.enrolledCourses.indexOf(course._id) > -1">Go To Course</button>
+        <button class="previwCourse"
+                (click)="onGoToCourseLecture(course._id)"
+                *ngIf="authService.userDetails.ownCourses.indexOf(course._id) > -1">Preview Your Course</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="paginationn">
+  <ngx-paginate
+    [page]="page"
+    [options]="paginateOptions"
+    (pageChange)='setPage($event)'>
+  </ngx-paginate>
+</div>

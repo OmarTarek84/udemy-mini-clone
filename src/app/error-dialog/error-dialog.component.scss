@@ -1,0 +1,45 @@
+.errorDialogParent {
+  text-align: center;
+  h2 {
+    color: red;
+    margin-top: 0.8%;
+  }
+  ul {
+    margin: 0;
+    margin-top: 3%;
+    text-align: left;
+    padding: 0;
+    li {
+      margin-top: 5px;
+      color: black;
+      font-size: 14px;
+    }
+  }
+}
+
+.closedialog {
+  width: 100%;
+  button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    padding: 2% 0;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    background-color: #FEB437;
+    margin-top: 3%;
+    cursor: pointer;
+  }
+}
+
+::ng-deep {
+  .mat-dialog-actions {
+    margin-bottom: 0;
+  }
+
+  .mat-dialog-container {
+    min-width: 31vw;
+  }
+}

@@ -1,0 +1,52 @@
+<div class="account-contFluid">
+  <div class="acc-con">
+    <div class="acc-row">
+      <div class="acc-col">
+        <h2>Your Personal Profile</h2>
+        <p class="subtitle">Edit Your Account Settings</p>
+        <form [formGroup]="accountForm" (ngSubmit)="submitEditUserForm($event)">
+          <div class="fieldP">
+            <div class="image">
+              <img [src]="imgSrc || userDetails.userPhoto || '../../assets/images/person.png'" alt="userimage" />
+            </div>
+            <div class="field">
+              <div class="emailInput">
+                <input type="email" placeholder="Type Your Email Here" formControlName="email" />
+                <p class="error" *ngIf="accountForm.get('email').touched&&accountForm.get('email').hasError('required')">Email is required</p>
+                <p class="error" *ngIf="accountForm.get('email').touched&&accountForm.get('email').hasError('email')">Email is not valid, please enter a valid email</p>
+              </div>
+              <div class="fullnameInput">
+                <input type="text" placeholder="Type Your Full Name Here" formControlName="fullname" />
+                <p class="error" *ngIf="accountForm.get('fullname').touched&&accountForm.get('fullname').hasError('required')">Please Enter Your Full Name</p>
+              </div>
+              <div class="inputImg">
+                <input type="file" name="image" accept=".png, .jpg, .jpeg" (change)="profilephotoChanged($event)" />
+                <button>Change Your Photo</button>
+              </div>
+            </div>
+          </div>
+          <div class="changePassHere">
+            <h3 class="change">Change Your Password Here</h3>
+            <input type="password" placeholder="Current Password" formControlName="currentpassword" />
+            <input type="password" placeholder="New Password" formControlName="password" />
+            <input type="password" placeholder="Confirm New Password" formControlName="confirmpassword" />
+            <div class="errors">
+              <!-- <p *ngIf="accountForm.get('currentpassword').hasError('minlength')&&accountForm.get('currentpassword').touched">Password Should Have At least 8 characters</p> -->
+              <p *ngIf="accountForm.get('password').touched&&accountForm.get('password').value.length < 8">Password Should have at least 8 characters</p>
+              <p *ngIf="accountForm.get('password').touched&&!validatePassRegex.test(accountForm.get('password').value)">Password Should have at least 1 upper character and 1 number</p>
+              <p *ngIf="accountForm.get('password').value!==accountForm.get('confirmpassword').value&&accountForm.get('password').touched&&accountForm.get('confirmpassword').touched">Passwords do not Match</p>
+            </div>
+          </div>
+          <button type="submit"
+                  [disabled]="!accountForm.valid ||
+                              accountForm.get('password').value!==accountForm.get('confirmpassword').value ||
+                              (accountForm.get('password').value >= 1&&!validatePassRegex.test(accountForm.get('password').value)&&accountForm.get('password').touched) ||
+                              (accountForm.get('currentpassword').value&&!accountForm.get('password').value&&accountForm.get('password').touched) ||
+                              (accountForm.get('password').value&&accountForm.get('password').value.length < 8&&accountForm.get('password').touched) ||
+                              appService.loading">Save Changes</button>
+        </form>
+        <p class="Success" *ngIf="successEditing">Your Account Has Been Saved Successfully</p>
+      </div>
+    </div>
+  </div>
+</div>

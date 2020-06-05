@@ -1,0 +1,174 @@
+@import '../../../assets/scss/var.scss';
+
+.signupParent {
+  .icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+  h3 {
+    text-align: center;
+    margin-top: 2%;
+  }
+  .egoo {
+    color: $blueColor;
+    font-size: 14px;
+    margin-top: 7%;
+    text-align: center;
+  }
+  button.google {
+    width: 80%;
+    padding: 2% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: $blueColor;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    cursor: pointer;
+    svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      margin-right: 4px;
+    }
+    span {
+      color: white;
+      margin-left: 4px;
+    }
+  }
+  form {
+    margin-top: 6%;
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      padding: 2%;
+      display: block;
+      width: 100%;
+      outline: none;
+    }
+    .pickPhPa {
+      position: relative;
+      margin-top: 3%;
+      .choosePhoto {
+        font-size: 14px;
+        background-color: $blueColor;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        padding: 3% 0;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      input {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        cursor: pointer;
+      }
+    }
+    img {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+    button[type="submit"] {
+      width: 100%;
+      color: $orangeColor;
+      background-color: white;
+      border: 1px solid $orangeColor;
+      cursor: pointer;
+      outline: none;
+      display: block;
+      margin-top: 5%;
+      padding: 2%;
+      border-radius: 4px;
+      &:hover {
+        background-color: $orangeColor;
+        color: white;
+      }
+      &:disabled {
+        &:hover {
+          color: $orangeColor;
+          background-color: white;
+        }
+        opacity: .3;
+        cursor: initial;
+      }
+    }
+    .spinner {
+      display: flex;
+      justify-content: center;
+      ::ng-deep {
+        .mat-progress-spinner circle, .mat-spinner circle {
+          stroke: $orangeColor;
+        }
+      }
+    }
+    .errors {
+      margin-top: 2px;
+      p {
+        color: red;
+        margin-top: 1px;
+        font-size: 10px;
+      }
+    }
+  }
+  p.already {
+    text-align: center;
+    color: grey;
+    font-size: 11px;
+    margin-top: 5%;
+    button {
+      text-decoration: underline;
+      color: $blueColor;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 10px;
+    }
+  }
+  button.close {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 4%;
+  }
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+      max-width: 95vw !important;
+  }
+  .mat-dialog-container {
+      padding: 4% 6%;
+      position: relative;
+      min-width: 37.5vw;
+      @media screen and (max-width: 767px) {
+        min-width: 65vw;
+      }
+      @media screen and (max-width: 415px) {
+          min-width: 95vw;
+      }
+      .mat-ripple {
+          display: none;
+      }
+  }
+}
+ button:disabled,
+ input:disabled {
+   opacity: .4;
+ }

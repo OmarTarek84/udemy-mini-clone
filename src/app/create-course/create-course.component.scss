@@ -1,0 +1,57 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import '../../assets/scss/var.scss';
+
+.create-course {
+  @extend .container-fluid;
+  .create-con {
+    @extend .container;
+    .create-row {
+      @extend .row;
+      .create-col {
+        @extend .col-12;
+        .spinner {
+          position: fixed;
+          left: 50%;
+          top: 45%;
+          transform: translate(-50%, -50%);
+          ::ng-deep {
+            .mat-progress-spinner circle, .mat-spinner circle {
+              stroke: $orangeColor;
+            }
+          }
+        }
+        mat-tab-group {
+          width: 100%;
+          margin-top: 2%;
+          ::ng-deep {
+            .mat-tab-labels {
+              justify-content: center;
+              margin: 0 2%;
+            }
+            .mat-tab-body {
+              padding: 2%;
+              background-color: rgba($blueColor, 0.75);
+              color: white;
+              min-height: 60vh;
+              @media screen and (max-width: 991px) {
+                padding: 4%
+              }
+              @media screen and (max-width: 576px) {
+                padding: 6% 5%;
+              }
+            }
+            .mat-tab-label-active {
+              .mat-tab-label-content {
+                color: $orangeColor;
+                font-weight: bold;
+              }
+            }
+            .mat-ink-bar {
+              background-color: $orangeColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

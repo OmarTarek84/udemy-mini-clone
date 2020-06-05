@@ -1,0 +1,219 @@
+@import '../../../assets/scss/var.scss';
+
+.cs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media screen and (max-width: 576px) {
+    justify-content: center;
+  }
+  .c {
+    flex: 0 0 30%;
+    box-shadow: 0 0 8px 0 rgba(52, 144, 222, 0.16);
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2%;
+    min-height: 250px;
+    @media screen and (max-width: 991px) {
+      flex: 0 0 48%;
+    }
+    @media screen and (max-width: 576px) {
+      flex: 0 0 75%;
+    }
+    @media screen and (max-width: 400px) {
+      flex: 0 0 90%;
+    }
+    &:hover {
+      box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+    }
+    .imageParent {
+      flex: 0 0 43%;
+      max-height: 43%;
+      img {
+        width: 100%;
+        height: 100%;
+        // @media screen and (max-width: 767px) {
+        //   height: 54%;
+        // }
+      }
+    }
+    .pad {
+      flex: 1;
+      padding: 0 7%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 6px;
+      span {
+        font-size: 17px;
+        font-weight: 600;
+        @media screen and (max-width: 576px) {
+          font-size: 14px;
+        }
+      }
+      p.name {
+        font-size: 15.5px;
+        font-weight: 300;
+        color: darkgrey;
+        margin-top: 3%;
+        @media screen and (max-width: 576px) {
+          font-size: 13px;
+        }
+      }
+      p.profession {
+        font-size: 14px;
+        color: darkgray;
+        margin-top: 1px;
+        @media screen and (max-width: 576px) {
+          font-size: 12px;
+        }
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 12%;
+        button {
+          cursor: pointer;
+          outline: none;
+          &.details {
+            flex: 0 0 45%;
+            border: 1px solid $blueColor;
+            color: $blueColor;
+            background-color: transparent;
+            padding: 2% 0;
+            @media screen and (max-width: 576px) {
+              font-size: 12px;
+            }
+            &:hover,
+            &:active {
+              color: white;
+              background-color: $blueColor;
+            }
+          }
+          &.wishlistt {
+            border: none;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &:hover mat-icon.yes {
+              display: block !important;
+            }
+            &:hover mat-icon.no {
+              display: none !important;
+            }
+            span {
+              font-size: 12px;
+              margin-right: 4px;
+              @media screen and (max-width: 576px) {
+                font-size: 10px;
+              }
+            }
+            mat-icon {
+              color: $orangeColor;
+              &.yes {
+                // display: none;
+              }
+            }
+            &:disabled {
+              opacity: .4;
+              cursor: initial;
+            }
+          }
+          &.delete {
+            flex: 0 0 90%;
+            margin-top: 6px;
+            border: 1px solid red;
+            color: red;
+            background-color: transparent;
+            padding: 2% 0;
+            margin-left: auto;
+            margin-right: auto;
+            @media screen and (max-width: 576px) {
+              font-size: 12px;
+            }
+            &:hover,
+            &:active {
+              color: white;
+              background-color: red;
+            }
+          }
+          &.removeWishlist,
+          &.gotocourse {
+            background-color: transparent;
+            border: none;
+            flex: 0 0 45%;
+            font-size: 12px;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          &.previwCourse {
+            margin-top: 10px;
+            flex: 0 0 100%;
+            background-color: transparent;
+            border: none;
+            font-size: 12px;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          &:disabled {
+            opacity: .4;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.paginationn {
+  margin-top: 5%;
+  ngx-paginate {
+    justify-content: center !important;
+    ::ng-deep {
+      .pages {
+        @media screen and (max-width: 500px) {
+          flex-direction: column;
+        }
+      }
+      .page-size-selection {
+        display: none;
+      }
+      .page-selection {
+        @media screen and (max-width: 500px) {
+          margin-top: 7px;
+        }
+      }
+      .page-entry {
+        margin: 0 4px;
+        background-color: transparent;
+        border: 1px solid $blueColor;
+        color: $blueColor;
+        &.active,
+        &:hover {
+          background-color: $blueColor;
+          color: white;
+        }
+        &.prev-button,
+        &.first-page-button,
+        &.next-button,
+        &.last-page-button {
+          &.disabled {
+            &:hover {
+              cursor: initial;
+              background-color: transparent;
+              color: #1F375D;;
+            }
+          }
+          @media screen and (max-width: 500px) {
+            margin-top: 7px;
+          }
+        }
+      }
+    }
+  }
+}

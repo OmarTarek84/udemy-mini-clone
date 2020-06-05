@@ -1,0 +1,255 @@
+@import '../../../assets/scss/var.scss';
+
+.signupParent {
+  .icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+  .usercreated {
+    color: green;
+    margin-top: 2.5%;
+    text-align: center;
+    font-size: 12px;
+  }
+  h3 {
+    text-align: center;
+    margin-top: 2%;
+  }
+  .egoo {
+    color: $blueColor;
+    font-size: 14px;
+    margin-top: 7%;
+    text-align: center;
+  }
+  button.google {
+    width: 80%;
+    padding: 2% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: $blueColor;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    cursor: pointer;
+    svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      margin-right: 4px;
+    }
+    span {
+      color: white;
+      margin-left: 4px;
+    }
+  }
+  form {
+    margin-top: 6%;
+    input {
+      padding: 2%;
+      display: block;
+      width: 100%;
+      outline: none;
+    }
+    p.forget {
+      text-align: right;
+      margin-top: 3px;
+      font-size: 10px;
+      button {
+        background-color: transparent;
+        text-decoration: underline;
+        color: $blueColor;
+        border: none;
+        font-size: 10px;
+        cursor: pointer;
+      }
+    }
+    button[type="submit"] {
+      width: 100%;
+      color: $orangeColor;
+      background-color: white;
+      border: 1px solid $orangeColor;
+      cursor: pointer;
+      outline: none;
+      display: block;
+      margin-top: 2%;
+      padding: 2%;
+      border-radius: 4px;
+      &:hover {
+        background-color: $orangeColor;
+        color: white;
+      }
+      &:disabled {
+        &:hover {
+          color: $orangeColor;
+          background-color: white;
+        }
+        opacity: .3;
+        cursor: initial;
+      }
+    }
+    .spinner {
+      display: flex;
+      justify-content: center;
+      ::ng-deep {
+        .mat-progress-spinner circle, .mat-spinner circle {
+          stroke: $orangeColor;
+        }
+      }
+    }
+    .errors {
+      margin-top: 2px;
+      p {
+        color: red;
+        margin-top: 1px;
+        font-size: 10px;
+      }
+    }
+  }
+  p.already {
+    text-align: center;
+    color: grey;
+    font-size: 11px;
+    margin-top: 5%;
+    button {
+      text-decoration: underline;
+      color: $blueColor;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 10px;
+    }
+  }
+  button.close {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 4%;
+  }
+}
+
+
+.resetParent {
+  .icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+  }
+  h3 {
+    text-align: center;
+    margin-top: 2%;
+  }
+  input {
+    padding: 2%;
+    display: block;
+    width: 100%;
+    outline: none;
+    margin-top: 8%;
+  }
+  .spinner {
+    display: flex;
+    justify-content: center;
+    ::ng-deep {
+      .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: $orangeColor;
+      }
+    }
+  }
+  .errors {
+    margin-top: 2px;
+    p {
+      color: red;
+      margin-top: 3px;
+      font-size: 10px;
+    }
+  }
+  button[type="submit"] {
+    width: 100%;
+    color: $orangeColor;
+    background-color: white;
+    border: 1px solid $orangeColor;
+    cursor: pointer;
+    outline: none;
+    display: block;
+    margin-top: 5%;
+    padding: 2%;
+    border-radius: 4px;
+    &:hover {
+      background-color: $orangeColor;
+      color: white;
+    }
+    &:disabled {
+      &:hover {
+        color: $orangeColor;
+        background-color: white;
+      }
+      opacity: .3;
+      cursor: initial;
+    }
+  }
+
+  button[type="button"] {
+    margin-top: 10%;
+    display: block;
+    text-align: right;
+    background-color: transparent;
+    text-decoration: underline;
+    color: $blueColor;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 12px;
+  }
+}
+
+.emailSent {
+  .imgP {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    img {
+      width: 50%;
+      margin-left: auto;
+      display: block;
+      margin-right: auto;
+    }
+  }
+  h2 {
+    margin-top: 5%;
+    text-align: center;
+  }
+  p {
+    margin-top: 2%;
+    font-size: 12px;
+    color: $blueColor;
+  }
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+      max-width: 95vw !important;
+  }
+  .mat-dialog-container {
+      padding: 4% 6%;
+      position: relative;
+      min-width: 31.5vw;
+      @media screen and (max-width: 767px) {
+        min-width: 65vw;
+      }
+      @media screen and (max-width: 415px) {
+        min-width: 95vw;
+      }
+      .mat-ripple {
+          display: none;
+      }
+  }
+}

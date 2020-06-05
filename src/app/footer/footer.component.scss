@@ -1,0 +1,65 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import '../../assets/scss/var.scss';
+
+footer {
+  padding: 2% 0;
+  background-color: aliceblue;
+  @extend .container-fluid;
+  .footer-con {
+    @extend .container;
+    .footer-row {
+      @extend .row;
+      .footer-col {
+        @extend .col;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media screen and (max-width: 767px) {
+          flex-direction: column;
+        }
+        .parentFlex {
+          display: flex;
+          align-items: center;
+          @media screen and (max-width: 767px) {
+            flex-direction: column;
+          }
+          .logo {
+            display: flex;
+            flex-direction: column;
+            span.online {
+              font-size: 17px;
+              white-space: nowrap;
+              @media screen and (max-width: 400px) {
+                font-size: 13px;
+              }
+              span {
+                color: $blueColor;
+                font-size: 30px;
+                font-weight: bolder;
+                @media screen and (max-width: 400px) {
+                  font-size: 20px;
+                }
+              }
+            }
+          }
+          .copyright {
+            margin-left: 6%;
+            white-space: nowrap;
+            @media screen and (max-width: 767px) {
+              margin-left: 0;
+              margin-top: 15px;
+            }
+          }
+        }
+        .codeCreated {
+          @media screen and (max-width: 767px) {
+            margin-top: 15px;
+          }
+          span {
+            color: $orangeColor;
+          }
+        }
+      }
+    }
+  }
+}

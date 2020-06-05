@@ -1,0 +1,232 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import '../../assets/scss/var.scss';
+
+header {
+  @extend .container-fluid;
+  box-shadow: 0 0 8px 0 rgba(52, 144, 222, 0.16);
+  height: 8vh;
+  min-height: 50px;
+  .header-con {
+    @extend .container;
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    .header-row {
+      @extend .row;
+      height: 100%;
+      .header-col {
+        @extend .col-12;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 767px) {
+          justify-content: flex-start;
+        }
+        .logoWithCategories {
+          @extend .col-4;
+          display: flex;
+          align-items: center;
+          position: relative;
+          @media screen and (max-width: 991px) {
+            flex: 0 0 40%;
+            max-width: 40%;
+          }
+          @media screen and (max-width: 767px) {
+            flex: 0 0 100%;
+            max-width: 100%;
+            justify-content: space-between;
+          }
+          .pA {
+            display: flex;
+            align-items: center;
+            .menuresponsive {
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+              outline: none;
+              @media screen and (max-width: 576px) {
+                transform: scale(0.8);
+              }
+              svg {
+                  position: relative;
+              }
+            }
+            .logo {
+              display: flex;
+              flex-direction: column;
+              cursor: pointer;
+              span.online {
+                font-size: 17px;
+                white-space: nowrap;
+                @media screen and (max-width: 400px) {
+                  font-size: 13px;
+                }
+                span {
+                  color: $blueColor;
+                  font-size: 30px;
+                  font-weight: bolder;
+                  @media screen and (max-width: 400px) {
+                    font-size: 20px;
+                  }
+                }
+              }
+            }
+          }
+          .cat-parent {
+            margin-left: 5vw;
+            @media screen and (max-width: 767px) {
+                margin-left: 0;
+            }
+            &:hover button {
+              background-color: $greyColor;
+            }
+            button {
+              padding: 1.5vh 5%;
+              outline: none;
+              border: none;
+              background-color: transparent;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              @media screen and (max-width: 400px) {
+                font-size: 11px;
+              }
+            }
+          }
+        }
+
+        .loginSignupBtns {
+          @extend .col-3;
+          display: flex;
+          align-items: center;
+          @media screen and (max-width: 991px) {
+            flex: 0 0 40%;
+            max-width: 40%;
+          }
+          @media screen and (max-width: 767px) {
+            display: none;
+          }
+          button {
+            flex: 0 0 34%;
+            cursor: pointer;
+            padding: 3% 0;
+            &.login {
+              background-color: $orangeColor;
+              border: none;
+            }
+            &.signup {
+              background-color: transparent;
+              border: 2px solid $blueColor;
+              margin-left: 2%;
+            }
+          }
+        }
+        .teachMycoursesFavsCartImg {
+          @extend .col-8;
+          justify-content: flex-end;
+          display: flex;
+          align-items: center;
+          a.teach,
+          a.myCourses {
+            text-decoration: none;
+            color: black;
+            &:hover {
+              text-decoration: underline;
+              color: $orangeColor;
+            }
+            &.active {
+              text-decoration: underline;
+              color: $orangeColor;
+            }
+          }
+          .favs,
+          .cart {
+            position: relative;
+            color: $blueColor;
+            span.howmany {
+              position: absolute;
+              font-size: 9px;
+              right: -3px;
+              top: -5px;
+              color: white;
+              font-weight: bolder;
+              padding: 3px;
+              border-radius: 50%;
+              background-color: $orangeColor;
+            }
+          }
+          a.teach,
+          a.myCourses,
+          .favs,
+          .cart {
+            margin-right: 2%;
+            cursor: pointer;
+          }
+        }
+        .account {
+          button.imgBtn {
+            border: 2px solid $orangeColor;
+            background-color: transparent;
+            outline: none;
+            height: 6.5vh;
+            border-radius: 50%;
+            cursor: pointer;
+            img.mainImg {
+              height: 100%;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .mat-menu-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    .imageWithEmail {
+      display: flex;
+      justify-content: space-between;
+      background-color: $greyColor;
+      padding: 3%;
+      img {
+        flex: 0 0 25%;
+        border-radius: 50%;
+        max-width: 25%;
+      }
+      .emailUsername {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 3% 0;
+        p.name {
+          font-size: 14px;
+          white-space: nowrap;
+        }
+        p.email {
+          color: grey;
+          font-size: 12px;
+          white-space: nowrap;
+        }
+      }
+    }
+    .item {
+      &:hover {
+        color: $orangeColor;
+      }
+      span.no {
+        color: white;
+        font-weight: bolder;
+        padding: 3px 6px;
+        border-radius: 50%;
+        background-color: $orangeColor;
+        margin-left: 3%;
+        font-size: 12px;
+      }
+    }
+  }
+}

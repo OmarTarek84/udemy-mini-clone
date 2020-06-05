@@ -1,0 +1,46 @@
+<div class="create-course">
+  <div class="create-con">
+    <div class="create-row">
+      <div class="create-col">
+        <div class="spinner" *ngIf="courseLoading">
+          <mat-spinner></mat-spinner>
+        </div>
+        <mat-tab-group [(selectedIndex)]="targetIndex" *ngIf="!courseLoading">
+          <mat-tab label="About You">
+              <app-about-you (continueToSecondTab)="onGoToTab(1)"
+                             [aboutYouForm]="aboutForm"></app-about-you>
+          </mat-tab>
+          <mat-tab label="Course Description" [disabled]="!aboutFormFinished || !aboutForm.valid">
+              <app-course-details (goToCourseSections)="onGoToTab(2)"
+                                  [courseDetailsForm]="courseDetailForm"
+                                  (addLearnOutput)="addLearn()"
+                                  (addReqOutput)="addRequirement()"
+                                  (removeLearnOutput)="removeLearn($event)"
+                                  (removeReqOutput)="removeRequirement($event)"
+                                  (fileChangedOutput)="changeCoursePhoto($event)"
+                                  [editedImage]="editedImgURL"
+                                  (studentLearnChangeOutput)="changeStudentLearn()"
+                                  (courseReqChangeOutput)="changeCourseReq()"></app-course-details>
+          </mat-tab>
+          [disabled]="!courseDetailFinished || !aboutFormFinished || !aboutForm.valid || !courseDetailForm.valid"
+          <mat-tab label="Course sections" [disabled]="!courseDetailFinished || !aboutFormFinished || !aboutForm.valid || !courseDetailForm.valid">
+              <app-course-sections (createCourse)="createCourse()"
+                                   [courseSectionsForm]="coursesectionForm"
+                                   (submitSectionNameOutput)="submitSectionName($event)"
+                                   (editSectionNameOutput)="editSecName($event)"
+                                   (submitLessonNameOutput)="submitLessonName($event)"
+                                   (editLessonNameOutput)="editLessonName($event)"
+                                   (addSectionOutput)="addSection()"
+                                   (onRemoveSectionOutput)="removeSec($event)"
+                                   (addLessonOutput)="addLesson($event)"
+                                   (removeLessonOutput)="removeLesson($event)"
+                                   (uploadVideoOutput)="videoFileChanged($event)"
+                                   (changeSectionNameOutput)="changeSectionName()"
+                                   (changeLessonNameOutput)="changeLessonName()"
+                                   [mode]="mode"></app-course-sections>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

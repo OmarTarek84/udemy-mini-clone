@@ -1,0 +1,460 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
+@import '../../assets/scss/var.scss';
+
+.spinner {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  ::ng-deep {
+    .mat-progress-spinner circle, .mat-spinner circle {
+      stroke: $orangeColor;
+    }
+  }
+}
+
+.coursenameTitle {
+  @extend .container-fluid;
+  background-color: $blueColor;
+  padding: 2% 0;
+  height: 30vh;
+  min-height: 170px;
+  @media screen and (max-width: 576px) {
+    min-height: 30vh;
+    height: auto;
+  }
+  .tit-con {
+    @extend .container;
+    height: 100%;
+    .tit-row {
+      @extend .row;
+      height: 100%;
+      .tit-col {
+        @extend .col-12;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @media screen and (max-width: 576px) {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .courseTitleSubtitle {
+          flex: 0 0 65%;
+          @media screen and (max-width: 576px) {
+            flex: 0 0 100%;
+          }
+          h2 {
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            @media screen and (max-width: 767px) {
+              font-size: 25px;
+            }
+            @media screen and (max-width: 576px) {
+              font-size: 20px;
+              text-align: center;
+            }
+          }
+          p {
+            color: white;
+            font-size: 17px;
+            margin-top: 7px;
+            @media screen and (max-width: 767px) {
+              font-size: 15px;
+            }
+            @media screen and (max-width: 576px) {
+              font-size: 13px;
+              text-align: center;
+              margin-top: 10px;
+            }
+          }
+          .createdByUpdate {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: rgb(247, 247, 247);
+            margin-top: 5%;
+            @media screen and (max-width: 767px) {
+              justify-content: center;
+            }
+            span {
+              font-size: 13px;
+              font-weight: 300;
+              &:nth-child(2) {
+                margin-left: 9%;
+              }
+              @media screen and (max-width: 576px) {
+                font-size: 10px;
+                margin-top: 6.5%;
+              }
+            }
+          }
+        }
+        .coursePhoto {
+          flex: 0 0 30%;
+          height: 100%;
+          @media screen and (max-width: 576px) {
+            flex: 0 0 70%;
+            margin-top: 9%;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.details {
+  @extend .container-fluid;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  .det-con {
+    @extend .container;
+    height: 100%;
+    .det-row {
+      @extend .row;
+      height: 100%;
+      .det-col {
+        @extend .col-12;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        @media screen and (max-width: 767px) {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .course {
+          flex: 0 0 75%;
+          @media screen and (max-width: 991px) {
+            flex: 0 0 60%;
+          }
+          @media screen and (max-width: 767px) {
+            flex: 0 0 90%;
+          }
+          @media screen and (max-width: 576px) {
+            flex: 0 0 100%;
+          }
+          .learn {
+            background-color: $greyColor;
+            border: 1px solid grey;
+            padding: 2% 4%;
+            h2 {
+              @media screen and (max-width: 576px) {
+                font-size: 18.5px;
+              }
+            }
+            .learn-list {
+              margin-top: 3%;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              align-items: flex-start;
+              .learn-one {
+                flex: 0 0 50%;
+                display: flex;
+                align-items: center;
+                &:not(:first-child),
+                &:not(:nth-child(2)) {
+                  margin-top: 8px;
+                }
+                @media screen and (max-width: 576px) {
+                  flex: 0 0 100%;
+                }
+                p {
+                  margin-left: 5px;
+                  @media screen and (max-width: 767px) {
+                    font-size: 13px;
+                  }
+                }
+                mat-icon {
+                  color: $orangeColor;
+                }
+              }
+            }
+          }
+          .Req {
+            margin-top: 7%;
+            background-color: #fbfbfb;
+            padding: 2% 4%;
+            @media screen and (max-width: 576px) {
+              margin-top: 15%;
+            }
+            h2 {
+              @media screen and (max-width: 576px) {
+                font-size: 18.5px;
+              }
+            }
+            .requirements-list {
+              p {
+                &:first-child {
+                  margin-top: 3%;
+                }
+                &:not(:first-child) {
+                  margin-top: 1%;
+                }
+                font-size: 17px;
+                font-weight: 500;
+                @media screen and (max-width: 576px) {
+                  font-size: 13px;
+                }
+              }
+            }
+          }
+          .courseDescription {
+            margin-top: 7%;
+            @media screen and (max-width: 576px) {
+              margin-top: 15%;
+            }
+            h2 {
+              @media screen and (max-width: 576px) {
+                font-size: 18.5px;
+              }
+            }
+            p {
+              margin-top: 2%;
+              @media screen and (max-width: 576px) {
+                font-size: 14px;
+              }
+            }
+          }
+          .courseContent {
+            margin-top: 10%;
+            @media screen and (max-width: 576px) {
+              margin-top: 20%;
+            }
+            .title {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              @media screen and (max-width: 767px) {
+               flex-wrap: wrap;
+               justify-content: center;
+              }
+              h2 {
+                @media screen and (max-width: 576px) {
+                  font-size: 18.5px;
+                  flex: 0 0 100%;
+                  text-align: center;
+                }
+              }
+              p {
+                font-weight: bold;
+                font-size: 16px;
+                flex: 0 0 30%;
+              }
+              .c {
+                display: flex;
+                flex: 1;
+                justify-content: flex-end;
+                @media screen and (max-width: 767px) {
+                  justify-content: center;
+                }
+                @media screen and (max-width: 576px) {
+                  margin-top: 10px;
+                }
+                span {
+                  font-weight: 300;
+                  font-size: 13px;
+                  margin-right: 4%;
+                }
+                button {
+                  border: none;
+                  background-color: transparent;
+                  text-decoration: none;
+                  color: rgb(37, 40, 214);
+                  outline: none;
+                  cursor: pointer;
+                }
+              }
+            }
+            .content {
+              margin-top: 2%;
+              @media screen and (max-width: 576px) {
+                margin-top: 10%;
+              }
+              ::ng-deep {
+                mat-expansion-panel {
+                  margin-top: 1.2%;
+                }
+                .mat-expansion-panel-header {
+                  background-color: #f7f7f7;
+                  @media screen and (max-width: 576px) {
+                    padding: 0 10px;
+                    font-size: 12px;
+                  }
+                }
+                .mat-expansion-panel-body {
+                  padding: 0;
+                }
+              }
+              .cTitle {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                border-bottom: 1px solid $greyColor;
+                p.lessonName {
+                  font-size: 16px;
+                  @media screen and (max-width: 576px) {
+                    font-size: 14px;
+                  }
+                }
+                span {
+                  font-size: 13px;
+                  @media screen and (max-width: 576px) {
+                    font-size: 11.5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .cart {
+          flex: 0 0 22%;
+          box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+          padding: 2%;
+          @media screen and (max-width: 991px) {
+            flex: 0 0 35%;
+          }
+          @media screen and (max-width: 767px) {
+            flex: 0 0 60%;
+            margin-top: 12%;
+          }
+          @media screen and (max-width: 576px) {
+            flex: 0 0 85%;
+          }
+          .price {
+            text-align: center;
+            color: grey;
+            display: block;
+            font-weight: bold;
+            font-size: 33px;
+          }
+          .own {
+            white-space: nowrap;
+            text-align: center;
+            margin-top: 5%;
+          }
+          a.continue {
+            display: block;
+            text-align: center;
+            margin-top: 5%;
+          }
+          .buttonsC {
+            margin-top: 20%;
+            display: flex;
+            justify-content: space-between;
+            button {
+              flex: 0 0 48%;
+              cursor: pointer;
+              padding: 3% 0;
+              border: none;
+              color: white;
+              font-weight: bold;
+              font-size: 13px;
+              background-color: $blueColor;
+              &.wishlisted,
+              &.cartAdded {
+                background-color: green;
+                cursor: initial;
+              }
+              &:disabled {
+                opacity: .4;
+              }
+            }
+          }
+          button.BuyNow {
+            width: 100%;
+            padding: 4% 0;
+            color: $orangeColor;
+            margin-top: 10%;
+            border: 1px solid $orangeColor;
+            display: block;
+            cursor: pointer;
+            &:hover {
+              background-color: $orangeColor;
+              color: white;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      .ins-col {
+        @extend .col-12;
+        .instructor {
+          margin-top: 7%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          @media screen and (max-width: 576px) {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          .photoParent {
+            flex: 0 0 20%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            @media screen and (max-width: 991px) {
+              flex: 0 0 25%;
+            }
+            @media screen and (max-width: 767px) {
+              flex: 0 0 35%;
+            }
+            @media screen and (max-width: 576px) {
+              flex: 0 0 65%;
+            }
+            img {
+              width: 100%;
+              height: 40%;
+              border-radius: 50%;
+              border: 1px solid $orangeColor;
+            }
+            .details {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              mat-icon {
+                margin: 0 3px;
+              }
+              p {
+                margin: 0 3px;
+                span {
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+          .description {
+            flex: 1;
+            margin-left: 7%;
+            @media screen and (max-width: 767px) {
+              text-align: center;
+            }
+            @media screen and (max-width: 576px) {
+              margin-top: 5%;
+              flex: 0 0 90%;
+            }
+            h3 {
+              color: $blueColor;
+            }
+            span {
+              margin-top: 9px;
+              color: grey;
+              display: inline-block;
+            }
+            p {
+              margin-top: 15px;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

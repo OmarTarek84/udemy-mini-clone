@@ -1,0 +1,32 @@
+<div class="sortP">
+  <div class="sortsSearches">
+    <div class="sortDateFilter">
+      <mat-select (selectionChange)="categoriesChange($event)" [(value)]="selectedCategory" [disabled]="allCoursesLoading">
+        <mat-option *ngFor="let cat of allCategories" [value]="cat">
+          {{cat}}
+        </mat-option>
+      </mat-select>
+      <mat-select (selectionChange)="sortDateChange($event)" [(value)]="sortedDate" [disabled]="allCoursesLoading">
+        <mat-option *ngFor="let date of dateSorts" [value]="date">
+          {{date}}
+        </mat-option>
+      </mat-select>
+      <button class="clear" (click)="clearAll()" [disabled]="allCoursesLoading || (searchCo === '' && selectedCategory === 'All' && sortedDate === 'From Newest')">Clear All</button>
+    </div>
+    <div class="search">
+      <input type="text" [(ngModel)]="searchCo" placeholder="Search Courses" />
+      <mat-icon (click)="searchAllCourses()" [style.opacity]="allCoursesLoading ? '.35': '1'">find_in_page</mat-icon>
+    </div>
+  </div>
+</div>
+
+
+<div class="allCourses">
+  <div class="spinner" *ngIf="allCoursesLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <app-courses-list [allCourses]="allTheCoursess"
+                    *ngIf="allTheCoursess.length > 0 && !allCoursesLoading"
+                    (pageChangedOutput)="pageChange($event)"></app-courses-list>
+  <p *ngIf="allTheCoursess.length <= 0 && !allCoursesLoading">No Courses Found</p>
+</div>

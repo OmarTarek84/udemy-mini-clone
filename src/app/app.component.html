@@ -1,0 +1,34 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <ng-container *ngIf="!authService.signedIn">
+      <p class="welcome">Welcome Omar</p>
+      <div mat-menu-item (click)="opensigninDialog()">Sign In</div>
+      <div mat-menu-item (click)="opensignupDialog()">Sign Up</div>
+    </ng-container>
+    <ng-container *ngIf="authService.signedIn">
+      <p class="welcome">Welcome Omar</p>
+      <a mat-menu-item>Teach On Online Teach</a>
+      <a mat-menu-item routerLink="/courses" (click)="closeSidenav()">My Courses</a>
+      <a mat-menu-item class="p" routerLink="/courses/wishlist" (click)="closeSidenav()">
+        <span class="title">Wishlist</span>
+        <span class="no">{{wishlistNo}}</span>
+      </a>
+      <a mat-menu-item class="p" routerLink="/cart" (click)="closeSidenav()">
+        <span class="title">Cart</span>
+        <span class="no">{{cartNo}}</span>
+      </a>
+    </ng-container>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div class="backdrop" *ngIf="loader">
+  <mat-spinner></mat-spinner>
+  <p>{{loadingText}}</p>
+</div>

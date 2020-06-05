@@ -1,0 +1,370 @@
+@import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../../../assets/scss/var.scss';
+
+h2,p {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 18px;
+  }
+}
+
+.addsecP {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+  @media screen and (max-width: 576px) {
+    margin-top: 7%;
+  }
+  .upSize {
+    font-size: 12px;
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+    @media screen and (max-width: 576px) {
+      font-size: 13px;
+    }
+  }
+}
+
+form {
+  margin-top: 2%;
+  height: 80%;
+  min-height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  mat-accordion {
+    ::ng-deep {
+      .mat-content {
+        align-items: center;
+      }
+      .mat-expansion-panel-header {
+        @media screen and (max-width: 576px) {
+          padding: 0 10px;
+        }
+      }
+      .mat-expansion-panel-header-title {
+        flex: 0 0 60%;
+        font-size: 19px;
+        @media screen and (max-width: 576px) {
+          font-size: 14px;
+          margin-right: 6px;
+        }
+      }
+      .mat-expansion-indicator {
+        position: relative;
+        left: 5px;
+      }
+      .mat-expansion-panel-body {
+        @media screen and (max-width: 576px) {
+          padding: 0 10px 8px;
+        }
+      }
+    }
+  }
+  .pa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    // @media screen and (max-width: 576px) {
+    //   flex-direction: column;
+    // }
+    .submitSectionNameInput {
+      display: flex;
+      align-items: center;
+      flex: 0 0 70%;
+      @media screen and (max-width: 576px) {
+        flex: 1;
+        width: 100%;
+      }
+      input {
+        border-radius: 6px;
+        border: 1px solid $orangeColor;
+        padding: 5.5px;
+        outline: none;
+        flex: 0 0 40%;
+        @media screen and (max-width: 576px) {
+          flex: 1;
+          width: 100%;
+        }
+      }
+      button {
+        margin-left: 2%;
+        background-color: $orangeColor;
+        color: white;
+        border: 1px solid grey;
+        padding: 5px 0;
+        outline: none;
+        cursor: pointer;
+        flex: 0 0 17%;
+        @media screen and (max-width: 767px) {
+          flex: 0 0 25%;
+        }
+        @media screen and (max-width: 576px) {
+          font-size: 12px;
+        }
+        &.edit {
+          @media screen and (max-width: 991px) {
+            flex: 0 0 65%;
+          }
+        }
+        &:disabled {
+          opacity: .4;
+        }
+      }
+    }
+    .iconss {
+      margin-left: 10%;
+      flex: 1;
+      display: flex;
+      justify-content: flex-start;
+      @media screen and (max-width: 576px) {
+        flex: 0 0 10%;
+        margin-left: 0;
+        transform: scale(0.8);
+      }
+      mat-icon {
+        color: rgb(255, 65, 65);
+      }
+    }
+  }
+  .allLessons {
+    margin-top: 3px;
+    border-bottom: 1px solid grey;
+    @media screen and (max-width: 576px) {
+      margin-top: 10px;
+    }
+    .lessonParent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3px;
+      @media screen and (max-width: 991px) {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .inputtText {
+        display: flex;
+        align-items: center;
+        flex: 0 0 40%;
+        @media screen and (max-width: 991px) {
+          flex: 0 0 83%;
+          order: 0;
+        }
+        @media screen and (max-width: 430px) {
+          max-width: 78%;
+        }
+        input {
+          border-radius: 6px;
+          border: 1px solid $orangeColor;
+          padding: 5.5px;
+          outline: none;
+          flex: 1;
+          @media screen and (max-width: 576px) {
+            padding: 3px;
+            font-size: 12px;
+          }
+        }
+        button {
+          margin-left: 2%;
+          background-color: $orangeColor;
+          color: white;
+          border: 1px solid grey;
+          padding: 5px 0;
+          outline: none;
+          cursor: pointer;
+          flex: 0 0 18%;
+          @media screen and (max-width: 576px) {
+            padding: 5px 4px;
+            font-size: 12px;
+          }
+          &:disabled {
+            opacity: .4;
+          }
+        }
+      }
+      .inputVideo {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        @media screen and (max-width: 991px) {
+          justify-content: center;
+          flex: 0 0 30%;
+          order: 2;
+          margin-top: 6px;
+        }
+        @media screen and (max-width: 576px) {
+          flex: 0 0 100%;
+        }
+        .progress {
+          flex: 1;
+          margin-right: 5px;
+        }
+        input {
+          width: 1%;
+          opacity: 0;
+        }
+      }
+      .uploadVideoBtn {
+        flex: 0 0 32%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        max-width: 36%;
+        @media screen and (max-width: 991px) {
+          flex: 0 0 65%;
+          order: 3;
+          margin-top: 6px;
+          justify-content: flex-start;
+          max-width: 65%;
+        }
+        @media screen and (max-width: 576px) {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+        button {
+          background-color: $orangeColor;
+          color: white;
+          font-weight: bold;
+          border: 1px solid lightgray;
+          padding: 1%;
+          cursor: pointer;
+          flex: 1;
+          white-space: nowrap;
+          @media screen and (max-width: 991px) {
+            flex: 0 0 30%;
+          }
+          @media screen and (max-width: 767px) {
+            font-size: 12px;
+          }
+          @media screen and (max-width: 576px) {
+            font-size: 11px;
+            flex: 0 0 32%;
+          }
+        }
+        .uploadStatusFileName {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          flex: 1;
+          max-width: 39%;
+          @media screen and (max-width: 991px) {
+            flex-direction: row;
+            max-width: 70%;
+          }
+          .afterupload {
+            white-space: nowrap;
+            color: green;
+            flex: 1;
+            margin-left: 4%;
+            @media screen and (max-width: 767px) {
+              font-size: 11px;
+            }
+            @media screen and (max-width: 576px) {
+              font-size: 9.5px;
+            }
+          }
+          span.spP {
+            font-size: 11px;
+            color: black;
+            display: flex;
+            width: 90%;
+            @media screen and (max-width: 991px) {
+              width: 50%;
+            }
+            @media screen and (max-width: 767px) {
+              font-size: 9px;
+            }
+            .imag {
+              flex: 1;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            .duration {
+              color: darkgray;
+            }
+          }
+        }
+      }
+      .iconss {
+        flex: 0 0 7%;
+        @media screen and (max-width: 991px) {
+          flex: 0 0 10%;
+          order: 1;
+          display: flex;
+          justify-content: flex-end;
+        }
+        @media screen and (max-width: 576px) {
+          transform: scale(0.8);
+        }
+        mat-icon {
+          @media screen and (max-width: 576px) {
+            margin: 0 1px;
+          }
+          cursor: pointer;
+          &:first-child {
+            color: lightgreen;
+          }
+          &:last-child {
+            color: red;
+        }
+        }
+      }
+    }
+  }
+  .submitParent {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2%;
+    @media screen and (max-width: 767px) {
+      margin-top: 5%;
+    }
+    @media screen and (max-width: 576px) {
+      justify-content: center;
+    }
+    button.subCourse {
+      background-color: $orangeColor;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 17px;
+      width: 17%;
+      padding: 1% 0;
+      border-radius: 6px;
+      cursor: pointer;
+      outline: none;
+      &:disabled {
+        opacity: .4;
+        cursor: initial;
+      }
+      @media screen and (max-width: 991px) {
+        width: 30%;
+      }
+      @media screen and (max-width: 767px) {
+        font-size: 15px;
+      }
+      @media screen and (max-width: 576px) {
+        width: 80%;
+      }
+    }
+  }
+}

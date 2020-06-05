@@ -1,0 +1,146 @@
+<header>
+  <div class="header-con">
+    <div class="header-row">
+      <div class="header-col">
+        <div class="logoWithCategories">
+          <div class="pA">
+            <button
+            *ngIf="innerWidth <= 767"
+            class="menuresponsive"
+            (click)="toggleSidenav()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="prefix__menu"
+                width="19.053"
+                height="15"
+                viewBox="0 0 19.053 15"
+              >
+                <g
+                  id="prefix__Group_2154"
+                  data-name="Group 2154"
+                  transform="translate(0 6.756)"
+                >
+                  <g id="prefix__Group_2153" data-name="Group 2153">
+                    <path
+                      id="prefix__Path_15893"
+                      d="M18.309 236H.744a.744.744 0 1 0 0 1.488h17.565a.744.744 0 1 0 0-1.488z"
+                      class="prefix__cls-1"
+                      data-name="Path 15893"
+                      transform="translate(0 -236)"
+                    />
+                  </g>
+                </g>
+                <g id="prefix__Group_2156" data-name="Group 2156">
+                  <g id="prefix__Group_2155" data-name="Group 2155">
+                    <path
+                      id="prefix__Path_15894"
+                      d="M18.309 76H.744a.744.744 0 0 0 0 1.489h17.565a.744.744 0 0 0 0-1.489z"
+                      class="prefix__cls-1"
+                      data-name="Path 15894"
+                      transform="translate(0 -76)"
+                    />
+                  </g>
+                </g>
+                <g
+                  id="prefix__Group_2158"
+                  data-name="Group 2158"
+                  transform="translate(0 13.512)"
+                >
+                  <g id="prefix__Group_2157" data-name="Group 2157">
+                    <path
+                      id="prefix__Path_15895"
+                      d="M18.309 396H.744a.744.744 0 1 0 0 1.488h17.565a.744.744 0 1 0 0-1.488z"
+                      class="prefix__cls-1"
+                      data-name="Path 15895"
+                      transform="translate(0 -396)"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <div class="logo" (click)="onGoToHome()">
+              <span class="online"><span>O</span>nline Teach</span>
+            </div>
+          </div>
+          <div class="cat-parent" [style.visibility]="router.url.indexOf('/courses/all-courses') > -1 ? 'hidden': 'visible'">
+            <button class="catBtn" [matMenuTriggerFor]="catMenu">
+              <mat-icon>toc</mat-icon>
+              <span class="categories">Categories</span>
+            </button>
+            <mat-menu #catMenu="matMenu" direction="down" yPosition="below" [xPosition]="innerWidth <= 767 ? 'before': 'after'">
+              <button *ngFor="let category of allCategories" mat-menu-item (click)="onGoToCourses(category)">
+                <mat-icon>{{category.icon}}</mat-icon>
+                <span>{{category.title}}</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="account res" *ngIf="signedIn && innerWidth <= 767">
+            <button class="imgBtn" [matMenuTriggerFor]="resaccountMenu">
+              <img class="mainImg" src="{{userPhoto}}" alt="userimage" />
+            </button>
+            <mat-menu #resaccountMenu="matMenu" direction="down" yPosition="below" [xPosition]="innerWidth <= 767 ? 'before': 'after'">
+              <div class="imageWithEmail">
+                <img src="{{userPhoto}}" alt="user image" />
+                <div class="emailUsername">
+                  <p class="name">Omar Tarek Ahmed Amin</p>
+                  <p class="email">omar.tarek@yahoo.com</p>
+                </div>
+              </div>
+              <a mat-menu-item class="item" routerLink="/courses/enrolled-courses">
+                <span class="title">Enrolled Courses</span>
+                <span class="no">{{enrolledCoursesNo}}</span>
+              </a>
+              <a mat-menu-item class="item" routerLink="/account">
+                <span class="title">Account</span>
+              </a>
+              <button mat-menu-item class="item" (click)="onLogout()">
+                <span class="title">Logout</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+        <div class="loginSignupBtns" *ngIf="!signedIn">
+          <button class="login" (click)="openSignInDialog()">Sign In</button>
+          <button class="signup" (click)="openSignUpDialog()">Sign Up</button>
+        </div>
+        <div class="teachMycoursesFavsCartImg" *ngIf="signedIn && innerWidth > 767">
+          <a class="teach" routerLink="/create-course" routerLinkActive="active">Teach On Online Teach</a>
+          <a class="myCourses" routerLink="/courses" routerLinkActive="active">Courses</a>
+          <div class="favs" (click)="onGoToWishlist()">
+            <mat-icon>favorite</mat-icon>
+            <span class="howmany">{{wishlistNo}}</span>
+          </div>
+          <div class="cart" (click)="onGoToCart()">
+            <mat-icon>shopping_cart</mat-icon>
+            <span class="howmany">{{cartNo}}</span>
+          </div>
+          <div class="account">
+            <button class="imgBtn" [matMenuTriggerFor]="accountMenu">
+              <img class="mainImg" src="{{userPhoto}}" alt="userimage" />
+            </button>
+            <mat-menu #accountMenu="matMenu" direction="down" yPosition="below" [xPosition]="innerWidth <= 767 ? 'before': 'after'">
+              <div class="imageWithEmail">
+                <img src="{{userPhoto}}" alt="user image" />
+                <div class="emailUsername">
+                  <p class="name">{{fullname}}</p>
+                  <p class="email">{{email}}</p>
+                </div>
+              </div>
+              <a mat-menu-item class="item" routerLink="/courses/enrolled-courses">
+                <span class="title">Enrolled Courses</span>
+                <span class="no">{{enrolledCoursesNo}}</span>
+              </a>
+              <a mat-menu-item class="item" (click)="onGoToAccount()">
+                <span class="title">Account</span>
+              </a>
+              <button mat-menu-item class="item" (click)="onLogout()">
+                <span class="title">Logout</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

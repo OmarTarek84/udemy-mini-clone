@@ -1,0 +1,98 @@
+<div class="homeImg">
+  <img src="../../assets/images/online-education.jpg" />
+  <div class="deta-con">
+    <div class="deta-row">
+      <div class="deta-col">
+        <h1>Your Path To Success</h1>
+        <p>The Best Online Learning Website To Maximize Your Learning Paths</p>
+        <button>Join Now For Free</button>
+        <div class="searchInp">
+          <input type="text" placeholder="Search Course" [(ngModel)]="search" />
+          <mat-icon (click)="searchCourseGoToCourses()">search</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="home-contFluid">
+  <div class="home-cont">
+    <div class="home-row">
+      <div class="home-col">
+        <h2 *ngIf="loggedIn">Welcome Back, {{fullName.split(' ').slice(0, 2).join(' ')}}</h2>
+        <h2 *ngIf="!loggedIn">Welcome To Udemy</h2>
+        <div class="recommended-course">
+          <p class="recomTitle">Our Newest Courses</p>
+          <div class="spinner" *ngIf="coursesLoading">
+            <mat-spinner></mat-spinner>
+          </div>
+          <div class="swiper-container" *ngIf="!coursesLoading" [swiper]="config">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" *ngFor="let course of recommendedCourses.slice(0, 6)">
+                <div class="imageP">
+                  <img src="{{course.coursePhoto}}" alt="course photo">
+                </div>
+                <div class="coursenameDuration">
+                  <h4>{{course.courseTitle}}</h4>
+                  <span>{{course.courseCategory}}</span>
+                </div>
+                <a class="getstarted" (click)="goToCourse(course)">Get Started</a>
+              </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="teachOnline">
+  <div class="teach-cont">
+    <div class="teach-row">
+      <div class="teach-col">
+        <mat-icon>surround_sound</mat-icon>
+        <div class="desc">
+          <h4>Teach The World Online</h4>
+          <span>Create an online video course, reach students across the globe, and earn money</span>
+        </div>
+        <button (click)="onGoToCreate()" *ngIf="loggedIn">Create Your Own Courses now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="faqParent">
+  <div class="faq-con">
+    <div class="faq-row">
+      <div class="faq-col">
+        <h3>Frequently Asked Questions</h3>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let faq of faqs">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{faq.question}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="ans">{{faq.answer}}</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="searchParent">
+  <div class="search-con">
+    <div class="search-row">
+      <div class="search-col">
+        <input type="text" [(ngModel)]="search" placeholder="Search Courses" />
+        <button (click)="searchCourseGoToCourses()">Search Now</button>
+      </div>
+    </div>
+  </div>
+</div>

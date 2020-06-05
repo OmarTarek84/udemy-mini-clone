@@ -1,0 +1,106 @@
+<h2>Now {{theMode === 'create' ? 'Add': 'Edit'}} Your Course Videos!</h2>
+<div class="addsecP">
+  <span></span>
+  <p class="upSize" [style.color]="sizeError ? 'red': 'white'">Maximum Video Size: 7MB</p>
+  <button class="addsec" (click)="addSection()">Add Section</button>
+</div>
+<form [formGroup]="courseSectionsForm" enctype="multipart/form-data">
+  <mat-accordion>
+    <ng-container formArrayName="sections"
+    *ngFor="let section of courseSectionsForm.get('sections')['controls']; let i = index" class="allSections">
+      <mat-expansion-panel [formGroupName]="i" class="sectionHeaderParent">
+        <mat-expansion-panel-header (keydown.Space)="onFilterKeyboard($event);" [collapsedHeight]="'60px'" [expandedHeight]="'58px'">
+          <mat-panel-title *ngIf="courseSectionsForm.get('sections')['controls'][i].get('mode').value === 'Done'">
+            {{courseSectionsForm.get('sections')['controls'][i].get('SubmittedSectionName').value}}
+          </mat-panel-title>
+          <div class="pa">
+            <div class="submitSectionNameInput">
+              <input type="text"
+                     formControlName="sectionName"
+                     placeholder="{{'Section ' + (i+1)}}"
+                     (input)="changeSectionName()"
+                     (click)="$event.stopPropagation()"
+                     *ngIf="courseSectionsForm.get('sections')['controls'][i].get('mode').value === 'ToSubmit' ||
+                            courseSectionsForm.get('sections')['controls'][i].get('mode').value === 'ToEdit'"
+                      (keydown.Space)="onFilterKeyboard($event);" />
+              <button (click)="submitSectionName($event, i)"
+                      [disabled]="!courseSectionsForm.get('sections')['controls'][i].get('sectionName').value"
+                      *ngIf="courseSectionsForm.get('sections')['controls'][i].get('mode').value === 'ToSubmit' ||
+                             courseSectionsForm.get('sections')['controls'][i].get('mode').value === 'ToEdit'">
+                Submit
+              </button>
+              <button (click)="editSectionName($event, i)"
+                      *ngIf="courseSectionsForm.get('sections')['controls'][i].get('mode').value === 'Done'"
+                      class="edit">
+                Edit
+              </button>
+            </div>
+            <div class="iconss">
+              <mat-icon (click)="onRemoveSection($event, i)">remove_circle</mat-icon>
+            </div>
+          </div>
+        </mat-expansion-panel-header>
+        <div formArrayName="sectionLessons"
+          *ngFor="let lesson of section.get('sectionLessons')['controls']; let ind = index" class="allLessons">
+          <div [formGroupName]='ind' class="lessonParent">
+            <div class="inputtText">
+              <p style="flex: 1;" *ngIf="lesson.get('lessonMode').value === 'Done'">
+                {{lesson.get('SubmittedLessonName').value || lesson.get('lessonName').value}}
+              </p>
+              <input type="text"
+                    (input)="changeLessonName()"
+                     formControlName="lessonName"
+                     placeholder="{{'Lesson ' + (ind+1)}}"
+                     (keydown.Space)="onFilterKeyboard($event);"
+                     *ngIf="lesson.get('lessonMode').value === 'ToSubmit' ||
+                            lesson.get('lessonMode').value === 'ToEdit'" />
+              <button (click)="submitLessonName($event, i, ind)"
+                     [disabled]="!lesson.get('lessonName').value"
+                     *ngIf="lesson.get('lessonMode').value === 'ToSubmit' ||
+                            lesson.get('lessonMode').value === 'ToEdit'">
+               Submit
+             </button>
+             <button (click)="editLessonName($event, i, ind)"
+                     *ngIf="lesson.get('lessonMode').value === 'Done'">
+               Edit
+             </button>
+            </div>
+            <div class="inputVideo">
+              <input type="file"
+                     name="video"
+                     accept=".mp4,.mpg,.m4v,.flv,.avi,.mov,.wmv,.divx,.f4v,.mpeg,.vob"
+                     (change)="uploadVideo($event, i, ind)"
+                     #videoUp />
+              <div class="progress">
+                <div class="progress-bar" [style.width]="lesson.get('uploadProgress').value + '%'">{{lesson.get('uploadProgress').value}}%</div>
+              </div>
+            </div>
+            <div class="uploadVideoBtn">
+              <button (click)="videoUp.click()">Upload Video</button>
+              <div class="uploadStatusFileName">
+                <p class="afterupload"
+                   [style.color]="lesson.get('uploadSuccess').value === 'Upload Success' || lesson.get('uploadSuccess').value === 'Ready To Upload' ? 'green':
+                                    lesson.get('uploadSuccess').value === 'Uploading...' ? 'orange': 'red'">{{lesson.get('uploadSuccess').value}}</p>
+                <span class="spP">
+                  <span class="imag" matTooltip="{{lesson.get('videoName').value}}" matTooltipPosition="below">
+                    {{lesson.get('videoName').value}}
+                  </span>
+                  <span class="duration">
+                    {{lesson.get('videoDuration').value}}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="iconss">
+              <mat-icon (click)="addLesson($event, i, ind)">add_circle</mat-icon>
+              <mat-icon (click)="removeLesson($event, i, ind)">remove_circle</mat-icon>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+  <div class="submitParent">
+    <button type="submit" (click)="onCreateCourse($event)" class="subCourse" [disabled]="!courseSectionsForm.valid">{{theMode === 'create' ? 'Create': 'Edit'}} Course</button>
+  </div>
+</form>

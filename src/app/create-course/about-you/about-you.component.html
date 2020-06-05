@@ -1,0 +1,17 @@
+<h2>FIrst Let Students Know Who You Are</h2>
+<form [formGroup]="aboutYouForm">
+  <div class="aboutInput">
+    <label>What's Your Profession?</label>
+    <input type="text" formControlName="profession" />
+  </div>
+  <div class="aboutInput">
+    <label>Describe Yourself To The Students</label>
+    <textarea formControlName="instructorDescription"></textarea>
+  </div>
+  <div class="btnn">
+    <button type="button" (click)="onGoToCourseDetailsTab()" [disabled]="!aboutYouForm.valid">
+      <span>Continue</span>
+      <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+  </div>
+</form>

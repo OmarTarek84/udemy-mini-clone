@@ -1,0 +1,22 @@
+<div class="coursesP">
+  <div class="courses-con">
+    <div class="courses-row">
+      <div class="courses-col">
+        <div class="tabsParent">
+          <div class="tabs">
+            <a [routerLink]="['/courses/all-courses']" routerLinkActive="active">All Courses</a>
+            <a *ngIf="loggedIn" [routerLink]="['/courses/enrolled-courses']" routerLinkActive="active">Enrolled Courses</a>
+            <a *ngIf="loggedIn" [routerLink]="['/courses/my-courses']" routerLinkActive="active">My Courses</a>
+            <a *ngIf="loggedIn" [routerLink]="['/courses/wishlist']" routerLinkActive="active">My Wishlist</a>
+          </div>
+          <div class="lists">
+            <app-all-courses *ngIf="router.url === '/courses/all-courses'"></app-all-courses>
+            <app-enrolled-courses *ngIf="router.url === '/courses/enrolled-courses'"></app-enrolled-courses>
+            <app-my-courses *ngIf="router.url === '/courses/my-courses'"></app-my-courses>
+            <app-my-wishlist *ngIf="router.url === '/courses/wishlist'"></app-my-wishlist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
